@@ -8,7 +8,7 @@ namespace PokerGame.Domain
 {
     public class Card
     {
-        public int Number { get; set; }
+        public Value Value { get; set; }
         public Suit Suit { get; set; }
 
     }
