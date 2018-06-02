@@ -17,6 +17,7 @@ namespace PokerGame.Domain.Tests
         }
 
         [TestMethod]
+        public void Given_existing_Deck_When_Shuffle_Then_Order_of_Cards_is_Different()
         {
             Deck deck = new Deck();
             deck.FillDeck();
