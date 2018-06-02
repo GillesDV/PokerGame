@@ -50,5 +50,19 @@ namespace PokerGame.Domain
                 Cards[counter] = valueToSwap;
             }
         }
+
+        public List<Card> DrawCards(int numberOfCards)
+        {
+            var cardsToReturn = new List<Card>(numberOfCards);
+
+            for (int i = 0; i < numberOfCards; i++)
+            {
+                int indexOfTopCard = Cards.Count - 1;
+                cardsToReturn.Add(Cards[indexOfTopCard]);
+                Cards.RemoveAt(indexOfTopCard);
+            }
+
+            return cardsToReturn;
+        }
     }
 }
