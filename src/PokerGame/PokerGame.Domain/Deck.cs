@@ -29,5 +29,26 @@ namespace PokerGame.Domain
                 }
             }
         }
+
+        public void ResetDeck()
+        {
+            Cards = new List<Card>();
+            FillDeck();
+        }
+
+        public void ShuffleDeck()
+        {
+            Random rng = new Random();
+
+            int counter = Cards.Count;
+            while (counter > 1)
+            {
+                counter--;
+                int k = rng.Next(counter + 1);
+                var valueToSwap = Cards[k];
+                Cards[k] = Cards[counter];
+                Cards[counter] = valueToSwap;
+            }
+        }
     }
 }
