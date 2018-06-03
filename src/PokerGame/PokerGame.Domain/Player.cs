@@ -16,5 +16,10 @@ namespace PokerGame.Domain
             Cards = new List<Card>();
             Name = name;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

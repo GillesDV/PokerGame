@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DeckTests.cs" />
+    <Compile Include="PokerTableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

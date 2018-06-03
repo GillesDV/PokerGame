@@ -54,6 +54,19 @@ namespace PokerGame
             table.FaceUpCards.AddRange(table.Deck.DrawCards(1));
             Console.Write(table.FaceUpCards[4].ToString());
             Console.Write(Environment.NewLine);
+            Console.Write(Environment.NewLine);
+
+            var winningPlayers = ResultCalculator.CalculateGameResult(table.Players, table.FaceUpCards);
+
+            if(winningPlayers.Count == 1)
+            {
+                Console.Write($"{winningPlayers[0].Name} wins."); 
+            }
+            else
+            {
+                var winningPlayerNames = string.Join(", ", winningPlayers);
+                Console.Write($"The winners are: {winningPlayerNames}. Split pot.");
+            }
 
             Console.Write(Environment.NewLine);
             Console.Write("Game over. Press enter to exit game.");
