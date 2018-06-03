@@ -11,5 +11,9 @@ namespace PokerGame.Domain
         public Value Value { get; set; }
         public Suit Suit { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Value} of {Suit}";
+        }
     }
 }
