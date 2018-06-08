@@ -142,6 +142,107 @@ namespace PokerGame.Domain.Tests
             Assert.AreEqual(player1.Name, winningPlayer[0].Name);
         }
 
+        [TestMethod]
+        public void Given_players_with_ThreeOfAKind_and_TwoPair_When_CalculateGameResult_Then_Player_with_ThreeOfAKind_wins()
+        {
+            var faceUpCards = new List<Card>()
+            {
+                new Card (Suit.Diamonds, Value.Two),
+                new Card (Suit.Hearts, Value.Four),
+                new Card (Suit.Hearts, Value.Six),
+                new Card (Suit.Clubs, Value.King),
+                new Card (Suit.Spades, Value.Queen)
+            };
+            var player1 = new Player("Gilles");
+            player1.Cards = new List<Card>
+            {
+                new Card (Suit.Diamonds, Value.King),
+                new Card (Suit.Spades, Value.King)
+            };
+            var player2 = new Player("Jane");
+            player2.Cards = new List<Card>
+            {
+                new Card (Suit.Hearts, Value.Two),
+                new Card (Suit.Diamonds, Value.Queen)
+            };
+            var players = new List<Player>()
+            {
+                player1, player2
+            };
+
+            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+
+            Assert.AreEqual(1, winningPlayer.Count);
+            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+        }
+
+        [TestMethod]
+        public void Given_players_with_TwoPair_and_Pair_When_CalculateGameResult_Then_Player_with_TwoPair_wins()
+        {
+            var faceUpCards = new List<Card>()
+            {
+                new Card (Suit.Diamonds, Value.Two),
+                new Card (Suit.Hearts, Value.Four),
+                new Card (Suit.Hearts, Value.Six),
+                new Card (Suit.Clubs, Value.King),
+                new Card (Suit.Spades, Value.Queen)
+            };
+            var player1 = new Player("Gilles");
+            player1.Cards = new List<Card>
+            {
+                new Card (Suit.Diamonds, Value.King),
+                new Card (Suit.Diamonds, Value.Queen)
+            };
+            var player2 = new Player("Jane");
+            player2.Cards = new List<Card>
+            {
+                new Card (Suit.Hearts, Value.Three),
+                new Card (Suit.Spades, Value.Queen)
+            };
+            var players = new List<Player>()
+            {
+                player1, player2
+            };
+
+            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+
+            Assert.AreEqual(1, winningPlayer.Count);
+            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+        }
+
+        [TestMethod]
+        public void Given_players_with_Pair_and_HighCard_When_CalculateGameResult_Then_Player_with_Pair_wins()
+        {
+            var faceUpCards = new List<Card>()
+            {
+                new Card (Suit.Diamonds, Value.Two),
+                new Card (Suit.Hearts, Value.Four),
+                new Card (Suit.Hearts, Value.Six),
+                new Card (Suit.Clubs, Value.King),
+                new Card (Suit.Spades, Value.Queen)
+            };
+            var player1 = new Player("Gilles");
+            player1.Cards = new List<Card>
+            {
+                new Card (Suit.Diamonds, Value.Jack),
+                new Card (Suit.Diamonds, Value.Queen)
+            };
+            var player2 = new Player("Jane");
+            player2.Cards = new List<Card>
+            {
+                new Card (Suit.Hearts, Value.Three),
+                new Card (Suit.Spades, Value.Seven)
+            };
+            var players = new List<Player>()
+            {
+                player1, player2
+            };
+
+            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+
+            Assert.AreEqual(1, winningPlayer.Count);
+            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+        }
 
     }
 }

@@ -14,7 +14,11 @@ namespace PokerGame.Domain
                 player.Cards.AddRange(faceUpCards);
             }
 
-            //check for full house (3 of the same value + 2 of the same value)
+            //straight flush (5 enumerating values, same suit)
+
+            //four of a kind (4 * same value)
+
+            //full house (3 of the same value + 2 of the same value)
             foreach (var player in players)
             {
                 var tripleCard = player.Cards.GroupBy(card => card.Value)
@@ -34,7 +38,7 @@ namespace PokerGame.Domain
                 return winningPlayers;
             }
 
-            //check for flush (5 times same Suit)
+            //flush (5 times same Suit)
             foreach (var player in players)
             {
                 var duplicateSuit = player.Cards.GroupBy(card => card.Suit)
@@ -50,7 +54,7 @@ namespace PokerGame.Domain
                 return winningPlayers;
             }
             
-            //check for straight (5 enumerating Values)
+            //straight (5 enumerating Values)
             foreach (var player in players)
             {
                 var ascendingCardIndexes = player.Cards.OrderBy(card => card.Value)
@@ -63,8 +67,62 @@ namespace PokerGame.Domain
                     {
                         amountOfSequentialCards++;
                     }
+                    else
+                    {
+                        amountOfSequentialCards--;
+                    }
                 }
                 if (amountOfSequentialCards >= 5)
+                {
+                    winningPlayers.Add(player);
+                }
+            }
+            if (winningPlayers.Count > 0)
+            {
+                return winningPlayers;
+            }
+
+            //Three of a kind (3 * same value)
+            foreach (var player in players)
+            {
+                var tripleCard = player.Cards.GroupBy(card => card.Value)
+                                    .Where(group => group.Count() == 3)
+                                    .Select(c => c.Key).ToList();
+
+                if (tripleCard.Count != 0)
+                {
+                    winningPlayers.Add(player);
+                }
+            }
+            if (winningPlayers.Count > 0)
+            {
+                return winningPlayers;
+            }
+
+            //two pair (2 times double value)
+            foreach (var player in players)
+            {
+                var doubleCards = player.Cards.GroupBy(card => card.Value)
+                    .Where(group => group.Count() == 2)
+                    .Select(c => c.Key).ToList();
+                if(doubleCards.Count == 2)
+                {
+                    winningPlayers.Add(player);
+                }
+            }
+            if (winningPlayers.Count > 0)
+            {
+                return winningPlayers;
+            }
+
+            //pair (double value)
+            foreach (var player in players)
+            {
+                var doubleCard = player.Cards.GroupBy(card => card.Value)
+                    .Where(group => group.Count() == 2)
+                    .Select(c => c.Key).ToList();
+
+                if (doubleCard.Count != 0)
                 {
                     winningPlayers.Add(player);
                 }
