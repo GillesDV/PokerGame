@@ -11,23 +11,23 @@ namespace PokerGame.Domain.Tests
         {
             var faceUpCards = new List<Card>()
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Two},
-                new Card { Suit = Suit.Diamonds, Value = Value.Four},
-                new Card { Suit = Suit.Diamonds, Value = Value.Six},
-                new Card { Suit = Suit.Clubs, Value = Value.Eight},
-                new Card { Suit = Suit.Spades, Value = Value.Ace}
+                new Card (Suit.Diamonds, Value.Two),
+                new Card (Suit.Diamonds, Value.Four),
+                new Card (Suit.Diamonds, Value.Six),
+                new Card (Suit.Clubs, Value.Eight),
+                new Card (Suit.Spades, Value.Ace)
             };
             var player1 = new Player("Gilles");
             player1.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Queen},
-                new Card { Suit = Suit.Diamonds, Value = Value.King}
+                new Card (Suit.Diamonds, Value.Queen),
+                new Card (Suit.Diamonds, Value.King)
             };
             var player2 = new Player("Jane");
             player2.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Hearts, Value = Value.Three},
-                new Card { Suit = Suit.Spades, Value = Value.Five}
+                new Card (Suit.Hearts, Value.Three),
+                new Card (Suit.Spades, Value.Five)
             };
             var players = new List<Player>()
             {
@@ -45,23 +45,23 @@ namespace PokerGame.Domain.Tests
         {
             var faceUpCards = new List<Card>()
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Two},
-                new Card { Suit = Suit.Hearts, Value = Value.Four},
-                new Card { Suit = Suit.Hearts, Value = Value.Six},
-                new Card { Suit = Suit.Clubs, Value = Value.Six},
-                new Card { Suit = Suit.Spades, Value = Value.Ace}
+                new Card (Suit.Diamonds, Value.Two),
+                new Card (Suit.Hearts, Value.Four),
+                new Card (Suit.Hearts, Value.Six),
+                new Card (Suit.Clubs, Value.Six),
+                new Card (Suit.Spades, Value.Ace)
             };
             var player1 = new Player("Gilles");
             player1.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Six},
-                new Card { Suit = Suit.Diamonds, Value = Value.Ace}
+                new Card (Suit.Diamonds, Value.Six),
+                new Card (Suit.Diamonds, Value.Ace)
             };
             var player2 = new Player("Jane");
             player2.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Hearts, Value = Value.Three},
-                new Card { Suit = Suit.Spades, Value = Value.Five}
+                new Card (Suit.Hearts, Value.Three),
+                new Card (Suit.Spades, Value.Five)
             };
             var players = new List<Player>()
             {
@@ -79,23 +79,23 @@ namespace PokerGame.Domain.Tests
         {
             var faceUpCards = new List<Card>()
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Two},
-                new Card { Suit = Suit.Hearts, Value = Value.Four},
-                new Card { Suit = Suit.Hearts, Value = Value.Six},
-                new Card { Suit = Suit.Clubs, Value = Value.King},
-                new Card { Suit = Suit.Spades, Value = Value.Queen}
+                new Card (Suit.Diamonds, Value.Two),
+                new Card (Suit.Hearts, Value.Four),
+                new Card (Suit.Hearts, Value.Six),
+                new Card (Suit.Clubs, Value.King),
+                new Card (Suit.Spades, Value.Queen)
             };
             var player1 = new Player("Gilles");
             player1.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Three},
-                new Card { Suit = Suit.Diamonds, Value = Value.Five}
+                new Card (Suit.Diamonds, Value.Three),
+                new Card (Suit.Diamonds, Value.Five)
             };
             var player2 = new Player("Jane");
             player2.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Hearts, Value = Value.Seven},
-                new Card { Suit = Suit.Spades, Value = Value.Ace}
+                new Card (Suit.Hearts, Value.Seven),
+                new Card (Suit.Spades, Value.Ace)
             };
             var players = new List<Player>()
             {
@@ -113,23 +113,23 @@ namespace PokerGame.Domain.Tests
         {
             var faceUpCards = new List<Card>()
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Two},
-                new Card { Suit = Suit.Hearts, Value = Value.Four},
-                new Card { Suit = Suit.Hearts, Value = Value.Six},
-                new Card { Suit = Suit.Clubs, Value = Value.King},
-                new Card { Suit = Suit.Spades, Value = Value.Queen}
+                new Card (Suit.Diamonds, Value.Two),
+                new Card (Suit.Hearts, Value.Four),
+                new Card (Suit.Hearts, Value.Six),
+                new Card (Suit.Clubs, Value.King),
+                new Card (Suit.Spades, Value.Queen)
             };
             var player1 = new Player("Gilles");
             player1.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Diamonds, Value = Value.Three},
-                new Card { Suit = Suit.Diamonds, Value = Value.Ace}
+                new Card (Suit.Diamonds, Value.Three),
+                new Card (Suit.Diamonds, Value.Ace)
             };
             var player2 = new Player("Jane");
             player2.Cards = new List<Card>
             {
-                new Card { Suit = Suit.Hearts, Value = Value.Seven},
-                new Card { Suit = Suit.Spades, Value = Value.Eight}
+                new Card (Suit.Hearts, Value.Seven),
+                new Card (Suit.Spades, Value.Eight)
             };
             var players = new List<Player>()
             {

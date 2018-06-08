@@ -18,11 +18,7 @@ namespace PokerGame.Domain
             {
                 foreach (Value value in Enum.GetValues(typeof(Value)))
                 {
-                    Cards.Add(new Card
-                    {
-                        Suit = suit,
-                        Value = value
-                    });
+                    Cards.Add(new Card(suit, value));
                 }
             }
         }

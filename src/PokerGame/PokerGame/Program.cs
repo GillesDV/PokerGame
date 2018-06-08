@@ -32,7 +32,8 @@ namespace PokerGame
             for (int i = 0; i < numberOfPlayers; i++)
             {
                 table.Players[i].Cards = table.Deck.DrawCards(2);
-                Console.Write($"Player {table.Players[i].Name} got {table.Players[i].Cards[0].ToString()} and {table.Players[i].Cards[1].ToString()}");
+                var currentPlayer = table.Players[i];
+                Console.Write($"Player {currentPlayer.Name} got {currentPlayer.Cards[0].ToString()} and {currentPlayer.Cards[1].ToString()}");
                 Console.Write(Environment.NewLine);
             }
             Console.Write(Environment.NewLine);

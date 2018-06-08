@@ -84,11 +84,11 @@ namespace PokerGame.Domain
                                         .Take(1)
                                         .Single();
             }
-            int HighCard = playerHighCards.Max();
+            int highCard = playerHighCards.Max();
             
             foreach(var player in players)
             {
-                if(player.Cards.Any(card => (int) card.Value == HighCard))
+                if(player.Cards.Any(card => (int) card.Value == highCard))
                 {
                     winningPlayers.Add(player);
                 }
