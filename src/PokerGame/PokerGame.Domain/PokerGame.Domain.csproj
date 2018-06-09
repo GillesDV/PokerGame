@@ -47,7 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Card\Suit.cs" />
     <Compile Include="Card\Value.cs" />
+    <Compile Include="PokerHands.cs" />
     <Compile Include="ResultCalculator.cs" />
+    <Compile Include="Result.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

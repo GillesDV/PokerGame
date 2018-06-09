@@ -54,16 +54,17 @@ namespace PokerGame
             Console.Write(Environment.NewLine);
             Console.Write(Environment.NewLine);
 
-            var winningPlayers = ResultCalculator.CalculateGameResult(table.Players, table.FaceUpCards);
+            var resultOfPokerGame = ResultCalculator.CalculateGameResult(table.Players, table.FaceUpCards);
+            var winningPokerHand = resultOfPokerGame.ResultOfPoker.ToString().Replace('_', ' ');
 
-            if(winningPlayers.Count == 1)
+            if(resultOfPokerGame.Names.Count == 1)
             {
-                Console.Write($"{winningPlayers[0].Name} wins."); 
+                Console.Write($"{resultOfPokerGame.Names[0]} wins with a {winningPokerHand}."); 
             }
             else
             {
-                var winningPlayerNames = string.Join(", ", winningPlayers);
-                Console.Write($"The winners are: {winningPlayerNames}. Split pot.");
+                var winningPlayerNames = string.Join(", ", resultOfPokerGame.Names);
+                Console.Write($"The winners are: {winningPlayerNames} with a {winningPokerHand}. Split pot.");
             }
 
             Console.Write(Environment.NewLine);

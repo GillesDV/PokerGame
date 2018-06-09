@@ -6,9 +6,9 @@ namespace PokerGame.Domain
 {
     public static class ResultCalculator
     {
-        public static List<Player> CalculateGameResult(List<Player> players, List<Card> faceUpCards)
+        public static Result CalculateGameResult(List<Player> players, List<Card> faceUpCards)
         {
-            List<Player> winningPlayers = new List<Player>();
+            var result = new Result();
             foreach (var player in players)
             {
                 player.Cards.AddRange(faceUpCards);
@@ -30,12 +30,13 @@ namespace PokerGame.Domain
 
                 if (tripleCard.Count != 0 && doubleCard.Count != 0)
                 {
-                    winningPlayers.Add(player);
+                    result.Names.Add(player.Name);
                 }
             }
-            if (winningPlayers.Count > 0)
+            if (result.Names.Count > 0)
             {
-                return winningPlayers;
+                result.ResultOfPoker = PokerHands.Full_house;
+                return result;
             }
 
             //flush (5 times same Suit)
@@ -46,12 +47,13 @@ namespace PokerGame.Domain
                                     .Select(c => c.Key).ToList();
                 if (duplicateSuit.Count != 0)
                 {
-                    winningPlayers.Add(player);
+                    result.Names.Add(player.Name);
                 }
             }
-            if (winningPlayers.Count > 0)
+            if (result.Names.Count > 0)
             {
-                return winningPlayers;
+                result.ResultOfPoker = PokerHands.Flush;
+                return result;
             }
             
             //straight (5 enumerating Values)
@@ -74,12 +76,13 @@ namespace PokerGame.Domain
                 }
                 if (amountOfSequentialCards >= 5)
                 {
-                    winningPlayers.Add(player);
+                    result.Names.Add(player.Name);
                 }
             }
-            if (winningPlayers.Count > 0)
+            if (result.Names.Count > 0)
             {
-                return winningPlayers;
+                result.ResultOfPoker = PokerHands.Straight;
+                return result;
             }
 
             //Three of a kind (3 * same value)
@@ -91,12 +94,13 @@ namespace PokerGame.Domain
 
                 if (tripleCard.Count != 0)
                 {
-                    winningPlayers.Add(player);
+                    result.Names.Add(player.Name);
                 }
             }
-            if (winningPlayers.Count > 0)
+            if (result.Names.Count > 0)
             {
-                return winningPlayers;
+                result.ResultOfPoker = PokerHands.Three_of_a_kind;
+                return result;
             }
 
             //two pair (2 times double value)
@@ -107,12 +111,13 @@ namespace PokerGame.Domain
                     .Select(c => c.Key).ToList();
                 if(doubleCards.Count == 2)
                 {
-                    winningPlayers.Add(player);
+                    result.Names.Add(player.Name);
                 }
             }
-            if (winningPlayers.Count > 0)
+            if (result.Names.Count > 0)
             {
-                return winningPlayers;
+                result.ResultOfPoker = PokerHands.Two_pair;
+                return result;
             }
 
             //pair (double value)
@@ -124,12 +129,13 @@ namespace PokerGame.Domain
 
                 if (doubleCard.Count != 0)
                 {
-                    winningPlayers.Add(player);
+                    result.Names.Add(player.Name);
                 }
             }
-            if (winningPlayers.Count > 0)
+            if (result.Names.Count > 0)
             {
-                return winningPlayers;
+                result.ResultOfPoker = PokerHands.Pair;
+                return result;
             }
 
             //check high card
@@ -148,13 +154,14 @@ namespace PokerGame.Domain
             {
                 if(player.Cards.Any(card => (int) card.Value == highCard))
                 {
-                    winningPlayers.Add(player);
+                    result.Names.Add(player.Name);
                 }
             }
 
-            if (winningPlayers.Count > 0)
+            if (result.Names.Count > 0)
             {
-                return winningPlayers;
+                result.ResultOfPoker = PokerHands.High_card;
+                return result;
             }
 
             throw new ArgumentException("Cannot calculate who wins");

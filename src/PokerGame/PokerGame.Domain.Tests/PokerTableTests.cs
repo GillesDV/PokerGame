@@ -34,10 +34,11 @@ namespace PokerGame.Domain.Tests
                 player1, player2
             };
 
-            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+            var resultOfGame = ResultCalculator.CalculateGameResult(players, faceUpCards);
 
-            Assert.AreEqual(1, winningPlayer.Count);
-            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+            Assert.AreEqual(1, resultOfGame.Names.Count);
+            Assert.AreEqual(player1.Name, resultOfGame.Names[0]);
+            Assert.AreEqual(PokerHands.Flush, resultOfGame.ResultOfPoker);
         }
 
         [TestMethod]
@@ -68,10 +69,11 @@ namespace PokerGame.Domain.Tests
                 player1, player2
             };
 
-            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+            var resultOfGame = ResultCalculator.CalculateGameResult(players, faceUpCards);
 
-            Assert.AreEqual(1, winningPlayer.Count);
-            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+            Assert.AreEqual(1, resultOfGame.Names.Count);
+            Assert.AreEqual(player1.Name, resultOfGame.Names[0]);
+            Assert.AreEqual(PokerHands.Full_house, resultOfGame.ResultOfPoker);
         }
 
         [TestMethod]
@@ -102,10 +104,11 @@ namespace PokerGame.Domain.Tests
                 player1, player2
             };
 
-            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+            var resultOfGame = ResultCalculator.CalculateGameResult(players, faceUpCards);
 
-            Assert.AreEqual(1, winningPlayer.Count);
-            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+            Assert.AreEqual(1, resultOfGame.Names.Count);
+            Assert.AreEqual(player1.Name, resultOfGame.Names[0]);
+            Assert.AreEqual(PokerHands.Straight, resultOfGame.ResultOfPoker);
         }
 
         [TestMethod]
@@ -136,10 +139,11 @@ namespace PokerGame.Domain.Tests
                 player1, player2
             };
 
-            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+            var resultOfGame = ResultCalculator.CalculateGameResult(players, faceUpCards);
 
-            Assert.AreEqual(1, winningPlayer.Count);
-            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+            Assert.AreEqual(1, resultOfGame.Names.Count);
+            Assert.AreEqual(player1.Name, resultOfGame.Names[0]);
+            Assert.AreEqual(PokerHands.High_card, resultOfGame.ResultOfPoker);
         }
 
         [TestMethod]
@@ -170,10 +174,11 @@ namespace PokerGame.Domain.Tests
                 player1, player2
             };
 
-            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+            var resultOfGame = ResultCalculator.CalculateGameResult(players, faceUpCards);
 
-            Assert.AreEqual(1, winningPlayer.Count);
-            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+            Assert.AreEqual(1, resultOfGame.Names.Count);
+            Assert.AreEqual(player1.Name, resultOfGame.Names[0]);
+            Assert.AreEqual(PokerHands.Three_of_a_kind, resultOfGame.ResultOfPoker);
         }
 
         [TestMethod]
@@ -204,10 +209,11 @@ namespace PokerGame.Domain.Tests
                 player1, player2
             };
 
-            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+            var resultOfGame = ResultCalculator.CalculateGameResult(players, faceUpCards);
 
-            Assert.AreEqual(1, winningPlayer.Count);
-            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+            Assert.AreEqual(1, resultOfGame.Names.Count);
+            Assert.AreEqual(player1.Name, resultOfGame.Names[0]);
+            Assert.AreEqual(PokerHands.Two_pair, resultOfGame.ResultOfPoker);
         }
 
         [TestMethod]
@@ -238,10 +244,11 @@ namespace PokerGame.Domain.Tests
                 player1, player2
             };
 
-            var winningPlayer = ResultCalculator.CalculateGameResult(players, faceUpCards);
+            var resultOfGame = ResultCalculator.CalculateGameResult(players, faceUpCards);
 
-            Assert.AreEqual(1, winningPlayer.Count);
-            Assert.AreEqual(player1.Name, winningPlayer[0].Name);
+            Assert.AreEqual(1, resultOfGame.Names.Count);
+            Assert.AreEqual(player1.Name, resultOfGame.Names[0]);
+            Assert.AreEqual(PokerHands.Pair, resultOfGame.ResultOfPoker);
         }
 
     }
