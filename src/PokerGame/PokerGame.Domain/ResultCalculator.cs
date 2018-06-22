@@ -15,6 +15,45 @@ namespace PokerGame.Domain
             }
 
             //straight flush (5 enumerating values, same suit)
+            foreach (var player in players)
+            {
+                var ascendingCards = player.Cards.OrderBy(card => card.Value)
+                                    .Select(card => card).ToList();
+                var cardsForStraightflush = new List<Card>();
+
+                int amountOfSequentialCards = 1;
+                for (int i = 0; i < ascendingCards.Count - 1; i++)
+                {
+                    cardsForStraightflush.Add(ascendingCards[i]);
+                    if (ascendingCards[i + 1].Value - ascendingCards[i].Value == 1)
+                    {
+                        amountOfSequentialCards++;
+                    }
+                    else
+                    {
+                        var cardThatIsNotInSequence = ascendingCards.Where(card => card.Suit == ascendingCards[i].Suit 
+                            && card.Value == ascendingCards[i].Value).Single();
+                        cardsForStraightflush.Remove(cardThatIsNotInSequence);
+                        if(amountOfSequentialCards > 1)
+                        {
+                            amountOfSequentialCards--;
+                        }
+                    }
+                }
+                 var duplicateSuits = cardsForStraightflush.GroupBy(card => card.Suit)
+                    .Where(group => group.Count() >= 5)
+                    .Select(c => c.Key).ToList();
+
+                if (amountOfSequentialCards >= 5 && duplicateSuits.Count != 0)
+                {
+                    result.Names.Add(player.Name);
+                }
+            }
+            if (result.Names.Count > 0)
+            {
+                result.ResultOfPoker = PokerHands.Straight_flush;
+                return result;
+            }
 
             //four of a kind (4 * same value)
             foreach (var player in players)
