@@ -17,6 +17,22 @@ namespace PokerGame.Domain
             //straight flush (5 enumerating values, same suit)
 
             //four of a kind (4 * same value)
+            foreach (var player in players)
+            {
+                var quatreCard = player.Cards.GroupBy(card => card.Value)
+                                    .Where(group => group.Count() == 4)
+                                    .Select(c => c.Key).ToList();
+
+                if (quatreCard.Count != 0)
+                {
+                    result.Names.Add(player.Name);
+                }
+            }
+            if (result.Names.Count > 0)
+            {
+                result.ResultOfPoker = PokerHands.Four_of_a_kind;
+                return result;
+            }
 
             //full house (3 of the same value + 2 of the same value)
             foreach (var player in players)
